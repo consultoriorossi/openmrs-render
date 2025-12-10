@@ -1,3 +1,9 @@
+databases:
+  - name: mydb
+    databaseName: openmrsdb
+    user: openmrsuser
+    plan: free
+
 services:
   - type: web
     name: openmrs-server
@@ -7,22 +13,12 @@ services:
     dockerfilePath: ./Dockerfile
     envVars:
       - key: OPENMRS_DB_HOST
-        fromDatabase: mydb
-        property: host
+        value: mydb
       - key: OPENMRS_DB_PORT
-        fromDatabase: mydb
-        property: port
+        value: "5432"
       - key: OPENMRS_DB_USER
-        fromDatabase: mydb
-        property: user
+        value: openmrsuser
       - key: OPENMRS_DB_PASSWORD
-        fromDatabase: mydb
-        property: password
+        fromDatabase: mydb:password
       - key: OPENMRS_DB_NAME
-        fromDatabase: mydb
-        property: database
-
-databases:
-  - name: mydb
-    plan: free
-    engine: postgres
+        value: openmrsdb
