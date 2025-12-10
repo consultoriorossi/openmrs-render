@@ -1,16 +1,14 @@
 databases:
   - name: mydb
-    databaseName: openmrsdb
-    user: openmrsuser
     plan: free
 
 services:
   - type: web
     name: openmrs-server
     env: docker
-    plan: free
     autoDeploy: true
     dockerfilePath: ./Dockerfile
+    plan: free
     envVars:
       - key: OPENMRS_DB_HOST
         value: mydb
@@ -19,6 +17,6 @@ services:
       - key: OPENMRS_DB_USER
         value: openmrsuser
       - key: OPENMRS_DB_PASSWORD
-        fromDatabase: mydb:password
+        value: ""
       - key: OPENMRS_DB_NAME
         value: openmrsdb
