@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: openmrs-server
+    env: docker
+    plan: free
+    autoDeploy: true
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: OPENMRS_DB_HOST
+        fromDatabase: mydb
+        property: host
+      - key: OPENMRS_DB_PORT
+        fromDatabase: mydb
+        property: port
+      - key: OPENMRS_DB_USER
+        fromDatabase: mydb
+        property: user
+      - key: OPENMRS_DB_PASSWORD
+        fromDatabase: mydb
+        property: password
+      - key: OPENMRS_DB_NAME
+        fromDatabase: mydb
+        property: database
+
+databases:
+  - name: mydb
+    plan: free
+    engine: postgres
