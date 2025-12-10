@@ -9,7 +9,8 @@ RUN apt-get update && apt-get install -y wget unzip && \
     mv apache-tomcat-9.0.82 tomcat && \
     rm apache-tomcat-9.0.82.tar.gz
 
-RUN wget https://downloads.openmrs.org/artifacts/core/org/openmrs/web/openmrs-webapp/2.5.13/openmrs-webapp-2.5.13.war -O openmrs.war
+RUN wget --no-check-certificate https://downloads.openmrs.org/artifacts/core/org/openmrs/web/openmrs-webapp/2.5.13/openmrs-webapp-2.5.13.war -O openmrs.war
+
 
 RUN mv openmrs.war tomcat/webapps/
 
